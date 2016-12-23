@@ -3,15 +3,21 @@
 import Vue from 'vue'
 import App from './App'
 import Article from './components/Article/Article'
+import Index from './components/Index/index'
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
 const routes = [{
   path: '/',
+  redirect: to => {
+    return '/index'
+  },
   component: App,
   children: [
-    {path: '/article', component: Article}
+    {path: '/index', component: Index},
+    {path: '/article', component: Article},
+    {path: '/article/:id', name: 'article',component: Article}
   ]}
 ]
 

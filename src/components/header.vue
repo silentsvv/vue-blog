@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="link">
-      <router-link to="/" class="index">首页</router-link>
+      <router-link to="/index" class="index">首页</router-link>
       <router-link to="/article" class="other">其他</router-link>
     </div>
   </div>
