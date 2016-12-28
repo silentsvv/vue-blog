@@ -2,40 +2,39 @@
   <div class="header">
     <div class="link">
       <router-link to="/index" class="index">首页</router-link>
-      <router-link to="/article" class="other">其他</router-link>
     </div>
   </div>
 </template>
 
 <style lang='less'>
   .header{
+    position: fixed;
     width: 100%;
     height: 80px;
-    box-shadow: 0px 0px 7px 2px #ccc;
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    z-index: 99;
   }
-
   .link{
+    position: relative;
+    margin-left: 80px;
     width: 200px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 80px;
     .index,.other{
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      position: absolute;
+      top: 50%;
+      margin-top: -40px;
       width: 60px;
-      height: 50px;
+      height: 80px;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 80px;
+      color: #ffffff;
       text-decoration: none;
-      color: #333;
+      &:hover{
+        color: #614224;
+      }
     }
     .active{
-      background-color: #ccc;
-      color: #fff;
+      color: #ffffff;
       border-radius: 3px;
     }
   }
