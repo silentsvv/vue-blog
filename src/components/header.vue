@@ -17,11 +17,9 @@
       myScroll(){
         if(window.scrollY > 350){
           this.isActive = true;
-          console.log(this.isActive)
         }
         if(window.scrollY < 350){
           this.isActive = false;
-          console.log(this.isActive)
         }
       }
     },
@@ -37,7 +35,7 @@
     width: 100%;
     height: 80px;
     z-index: 99;
-    transition:all 1s;
+    transition:all 0.35s;
   }
   .link{
     position: relative;
@@ -51,7 +49,6 @@
       width: 60px;
       height: 80px;
       font-size: 20px;
-      font-weight: 600;
       line-height: 80px;
       color: #ffffff;
       text-decoration: none;

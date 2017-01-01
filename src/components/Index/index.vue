@@ -8,9 +8,6 @@
   export default{
     components: {
       MyArticle
-    },
-    created () {
-      console.log(mock);
     }
   }
 </script>

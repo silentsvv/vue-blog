@@ -9,7 +9,7 @@
     </div>
     <div class="article-view"> 
       <div class="more">
-        阅读全文
+        <router-link :to="{name : 'article', params: {id: article.id}}" on:click='getDate' class="index">阅读全文</router-link>
       </div>
     </div>
     <div class="article-date">
@@ -27,10 +27,24 @@
   export default{
     data () {
       return {
-        articles : mock.article
+        articles : ""
       }
     },
-    methods: {
+    methods:{
+    },
+    created() {
+      var that = this;
+      var xmlHttp = new XMLHttpRequest();
+      xmlHttp.onreadystatechange = function(){
+        if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
+          var data = xmlHttp.responseText;
+          console.log(JSON.parse(data));
+          console.log(that.articles);
+          that.articles = JSON.parse(data);
+        }
+      }
+      xmlHttp.open("get", "http://localhost/blog/vue-blog/admin/model/article.php", true);
+      xmlHttp.send();
     }
   }
 </script>
@@ -43,13 +57,13 @@
     background: #fff;
     box-shadow: 0px 0px 7px 0px #ccc;
     margin: 40px auto;
+    animation: fade 0.35s;
   } 
 
   .article-title{
     font-size: 35px;
     text-align: center;
     padding: 25px 10px;
-    font-weight: 600;
     a{
       text-decoration: none;
       color: #000;
@@ -76,6 +90,10 @@
       border: 1px solid #d89572;
       cursor: pointer;
       border-radius: 5px;
+      a{
+        color: #d89572;
+        text-decoration: none;
+      }
     }
   }
 
@@ -96,5 +114,11 @@
     color: #929090;
     font-size: 14px;
     border-bottom: 1px solid #929090;
+  }
+
+  @keyframes fade{
+    0%{opacity: 0};
+    50%{opacity: 0};
+    100%{opacity: 1};
   }
 </style>
