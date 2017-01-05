@@ -43,7 +43,8 @@
           that.articles = JSON.parse(data);
         }
       }
-      xmlHttp.open("get", "http://localhost/blog/vue-blog/admin/model/article.php", true);
+      // xmlHttp.open("get", "../../../admin/model/article.php", true);
+      xmlHttp.open("get", "http://localhost/blog/vue-blog/admin/model/ajax.php", true);
       xmlHttp.send();
     }
   }

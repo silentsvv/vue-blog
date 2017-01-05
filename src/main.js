@@ -5,6 +5,7 @@ import App from './App'
 import Article from './components/Article/Article'
 import Index from './components/Index/index'
 import VueRouter from 'vue-router'
+import AddArticle from './components/Admin/Add/addArticle'
 
 Vue.use(VueRouter)
 
@@ -17,7 +18,8 @@ const routes = [{
   children: [
     {path: '/index', component: Index},
     {path: '/article', component: Article},
-    {path: '/article/:id', name: 'article',component: Article}
+    {path: '/article/:id', name: 'article',component: Article},
+    {path: '/add', component: AddArticle}
   ]}
 ]
 

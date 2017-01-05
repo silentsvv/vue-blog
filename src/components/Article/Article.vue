@@ -33,6 +33,7 @@
           that.article = data;
         }
       }
+      // xmlHttp.open("POST", "../../../admin/model/ajax.php", true);
       xmlHttp.open("POST", "http://localhost/blog/vue-blog/admin/model/ajax.php", true);
       xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       xmlHttp.send(data);
