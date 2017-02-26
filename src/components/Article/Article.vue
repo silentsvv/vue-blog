@@ -12,31 +12,33 @@
 </template>
 
 <script>
+  import mock from '../../data/data.js'
+
   export default {
     data () {
       return{
-        article : "",
+        article : mock.article[0],
         show: true
       }
     },
     created () {
-      var that = this;
-      var xmlHttp = new XMLHttpRequest();
-      var url = location.href;
-      var id = url.match(/article\/(\d)/)[1];
-      var data = "id="+id;
-      console.log(data);
-      xmlHttp.onreadystatechange = function(){
-        if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
-          var data = xmlHttp.responseText;
-          data = JSON.parse(data);
-          that.article = data;
-        }
-      }
-      // xmlHttp.open("POST", "../../../admin/model/ajax.php", true);
-      xmlHttp.open("POST", "http://localhost/blog/vue-blog/admin/model/ajax.php", true);
-      xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      xmlHttp.send(data);
+      // var that = this;
+      // var xmlHttp = new XMLHttpRequest();
+      // var url = location.href;
+      // var id = url.match(/article\/(\d)/)[1];
+      // var data = "id="+id;
+      // console.log(data);
+      // xmlHttp.onreadystatechange = function(){
+      //   if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
+      //     var data = xmlHttp.responseText;
+      //     data = JSON.parse(data);
+      //     that.article = data;
+      //   }
+      // }
+      // // xmlHttp.open("POST", "../../../admin/model/ajax.php", true);
+      // xmlHttp.open("POST", "http://localhost/blog/vue-blog/admin/model/ajax.php", true);
+      // xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      // xmlHttp.send(data);
     }
   }
 </script>

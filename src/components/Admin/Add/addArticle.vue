@@ -1,13 +1,27 @@
 <template>
 <div class="wrap">
-  <div class="form">
+  <div class="form" ref="form">
     <div class="form-title">
       添加新的文章
     </div>
     <div class="form-tabel">
-      <div class="article-title">
-        <span class="title-text">标题</span>
-        <input type="text" class="title-input">
+      <div class="article-input">
+        <div class="article-title">
+          <span class="title-text">标题</span>
+          <input type="text" class="title-input">
+        </div>
+        <div class="article-tag">
+          <span class="tag-text">标签</span>
+          <input type="text" class="tag-input">
+        </div>
+      </div>
+      <div class="editor-wrap">
+        <div class="editor">
+          <script id="editor" type="text/plain"></script>
+        </div>
+        <div class="upload">
+          <span class="get-msg" @click="getMsg()">提交</span>
+        </div>
       </div>
     </div>
   </div>
@@ -15,10 +29,34 @@
 </template>
 
 <script>
+require('static/utf8-php/ueditor.config.js');
+require('static/utf8-php/ueditor.all.min.js');
+require('static/utf8-php/lang/zh-cn/zh-cn.js');
   export default{
-    methods:{
+    data (){
+      return {
+        editor : null
+      }
     },
-    created() {
+    methods:{
+      getMsg() {
+        console.log(this.editor.getContent())
+      }
+    },
+    mounted() {
+      var _this = this
+      var a = 1000
+      console.log(_this.$refs.form.offsetWidth)
+      this.editor = UE.getEditor('editor',{
+        toolbars: [
+          ['bold', 'italic', 'underline', 'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', 'indent','link','unlink','fontfamily', 'fontsize','simpleupload', 'insertimage','emotion']
+        ],
+        initialFrameWidth: _this.$refs.form.offsetWidth - 100,
+        initialFrameHeight: 350
+      })
+    },
+    destroyed() {
+      this.editor.destroy();
     }
   }
 </script>
@@ -41,21 +79,24 @@
       background-color: #944d4d;
     }
     .form-tabel{
-      width: 100%;
+      width: 930px;
       padding: 10px;
-      .article-title{
-        width: 80%;
+      .article-input{
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+      .article-title,.article-tag{
+        width: 850px;
         margin: 0 auto;
-        margin-top: 50px;
-        .title-text{
+        .title-text,.tag-text{
           display: inline-block;
           width: 100px;
-          height: 80px;
-          line-height: 80px;
-          font-size: 20px;
+          height: 50px;
+          line-height: 50px;
+          font-size: 16px;
         }
-        .title-input{
-          height: 40px;
+        .title-input,.tag-input{
+          height: 26px;
           border: 1px solid #cc9a9a;
           border-radius: 5px;
           padding-left: 5px;
@@ -65,6 +106,26 @@
           }
         }
       }
+    }
+  }
+
+  .editor{
+    width: 850px;
+    margin: 0 auto;
+  }
+  .upload{
+    width: 850px;
+    height: 25px;
+    margin: 20px auto;
+    .get-msg{
+      display: block;
+      margin: 0 auto;
+      width: 80px;
+      height: 25px;
+      line-height: 25px;
+      text-align: center;
+      color: #fff;
+      background: #a95252;
     }
   }
 </style>
