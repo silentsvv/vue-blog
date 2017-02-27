@@ -22,23 +22,13 @@
       }
     },
     created () {
-      // var that = this;
-      // var xmlHttp = new XMLHttpRequest();
-      // var url = location.href;
-      // var id = url.match(/article\/(\d)/)[1];
-      // var data = "id="+id;
-      // console.log(data);
-      // xmlHttp.onreadystatechange = function(){
-      //   if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
-      //     var data = xmlHttp.responseText;
-      //     data = JSON.parse(data);
-      //     that.article = data;
-      //   }
-      // }
-      // // xmlHttp.open("POST", "../../../admin/model/ajax.php", true);
-      // xmlHttp.open("POST", "http://localhost/blog/vue-blog/admin/model/ajax.php", true);
-      // xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      // xmlHttp.send(data);
+      var url = location.href;
+      var id = url.match(/article\/(\d*)/)[1];
+      this.$http.post('http://localhost:80/vue-blog/admin/model/articleList.php', {"id":id},{emulateJSON:true}).then(response => {
+        this.article = response.body;  
+      }, response => {
+        // error callback
+      })
     }
   }
 </script>

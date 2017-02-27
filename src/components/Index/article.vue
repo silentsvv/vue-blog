@@ -34,7 +34,7 @@
     },
     mounted() {
       this.$http.get('http://localhost:80/vue-blog/admin/model/articleList.php').then(response => {
-        console.log(response.body);
+        this.articles = response.body;  
       }, response => {
         // error callback
       })
