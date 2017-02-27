@@ -8,11 +8,11 @@
       <div class="article-input">
         <div class="article-title">
           <span class="title-text">标题</span>
-          <input type="text" class="title-input">
+          <input type="text" class="title-input" ref="title">
         </div>
         <div class="article-tag">
           <span class="tag-text">标签</span>
-          <input type="text" class="tag-input">
+          <input type="text" class="tag-input" ref="tag">
         </div>
       </div>
       <div class="editor-wrap">
@@ -40,7 +40,23 @@ require('static/utf8-php/lang/zh-cn/zh-cn.js');
     },
     methods:{
       getMsg() {
+        console.log(this.$refs.title.value);
+        var title = this.$refs.title.value;
+        var tag = this.$refs.tag.value;
+        var content = this.editor.getContent();
         console.log(this.editor.getContent())
+        this.$http.post('http://localhost:80/vue-blog/admin/model/articleAdd.php',
+          {
+            "method":"add",
+            "title":title,
+            "type":tag,
+            "content":content
+          },{emulateJSON:true}
+        ).then(response => {
+          console.log(response.body)
+        }, response => {
+          // error callback
+        })
       }
     },
     mounted() {

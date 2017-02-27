@@ -12,8 +12,7 @@
         <router-link :to="{name : 'article', params: {id: article.id}}" on:click='getDate' class="index">阅读全文</router-link>
       </div>
     </div>
-    <div class="article-date">
-      {{article.date}}
+    <div class="article-date" v-html="article.date">
     </div>
     <div class="article-type">
       #闲情日志
