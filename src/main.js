@@ -5,9 +5,11 @@ import App from './App'
 import Article from './components/Article/Article'
 import Index from './components/Index/index'
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 import AddArticle from './components/Admin/Add/addArticle'
 
 Vue.use(VueRouter)
+Vue.use(VueResource)
 
 const routes = [{
   path: '/',

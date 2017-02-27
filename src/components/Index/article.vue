@@ -32,20 +32,12 @@
     },
     methods:{
     },
-    created() {
-      // var that = this;
-      // var xmlHttp = new XMLHttpRequest();
-      // xmlHttp.onreadystatechange = function(){
-      //   if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
-      //     var data = xmlHttp.responseText;
-      //     console.log(JSON.parse(data));
-      //     console.log(that.articles);
-      //     that.articles = JSON.parse(data);
-      //   }
-      // }
-      // // xmlHttp.open("get", "../../../admin/model/article.php", true);
-      // xmlHttp.open("get", "http://localhost/blog/vue-blog/admin/model/ajax.php", true);
-      // xmlHttp.send();
+    mounted() {
+      this.$http.get('http://localhost:80/vue-blog/admin/model/articleList.php').then(response => {
+        console.log(response.body);
+      }, response => {
+        // error callback
+      })
     }
   }
 </script>
