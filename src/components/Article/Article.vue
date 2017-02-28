@@ -4,9 +4,9 @@
         <div class="title">
           {{article.title}}
         </div>
-        <div class="content">
-          {{article.content}}
+        <div class="content" v-html="article.content">
         </div>
+        <div class="time">{{article.time}}</div>
       </div> 
   </div>
 </template>
@@ -24,7 +24,7 @@
     created () {
       var url = location.href;
       var id = url.match(/article\/(\d*)/)[1];
-      this.$http.post('http://localhost:80/vue-blog/admin/model/articleList.php', {"id":id},{emulateJSON:true}).then(response => {
+      this.$http.post( global.url + '/admin/model/articleList.php', {"id":id},{emulateJSON:true}).then(response => {
         this.article = response.body;  
       }, response => {
         // error callback
@@ -43,6 +43,7 @@
       background: #fff;
       box-shadow: 0px 0px 15px 1px #ccc;
       .title{
+        position: relative;        
         width: 100%;
         height: 150px;
         text-align: center;
@@ -52,9 +53,25 @@
       }
       .content{
         width: 100%;
-        padding: 40px;
+        box-sizing: border-box;
+        padding: 40px 100px;
+        margin-bottom: 100px;
         font-size: 16px;
       }
+      .time{
+        margin-right: 20px;
+        text-align: right;
+        font-size: 14px;
+        line-height: 50px;
+        color: #8a8a8a;
+      }
+    }
+  }
+
+  .wrap{
+    p{
+      font-size: 16px;
+      line-height: 30px;
     }
   }
 

@@ -11,6 +11,8 @@ import AddArticle from './components/Admin/Add/addArticle'
 Vue.use(VueRouter)
 Vue.use(VueResource)
 
+global.url = '';
+
 const routes = [{
   path: '/',
   redirect: to => {

@@ -4,18 +4,18 @@
     <div class="article-title">
       <router-link :to="{ name: 'article', params: {id: article.id}}">{{article.title}}</router-link>
     </div> 
-    <div class="article-summary">
-      {{article.content}}
+    <div class="article-summary" v-html="article.content">
     </div>
     <div class="article-view"> 
       <div class="more">
         <router-link :to="{name : 'article', params: {id: article.id}}" on:click='getDate' class="index">阅读全文</router-link>
       </div>
     </div>
-    <div class="article-date" v-html="article.date">
+    <div class="article-date">
+      {{article.time}}
     </div>
     <div class="article-type">
-      #闲情日志
+      #{{article.type}}
     </div>
   </div>
 </div>
@@ -32,8 +32,12 @@
     methods:{
     },
     mounted() {
-      this.$http.get('http://localhost:80/vue-blog/admin/model/articleList.php').then(response => {
-        this.articles = response.body;  
+      this.$http.get( global.url + '/admin/model/articleList.php').then(response => {
+        this.articles = response.body;
+        for(let i = 0; i < this.articles.length; i++){
+          this.articles[i].content = this.articles[i].content.replace(/<[^>]*>/gi,'').replace(/&nbsp;/gi,' ').substring(0,30)+'......';
+        }
+        console.log(this.articles);
       }, response => {
         // error callback
       })
@@ -105,7 +109,7 @@
     right: 10px;
     color: #929090;
     font-size: 14px;
-    border-bottom: 1px solid #929090;
+    border-bottom: 1px solid #b9b9b9;
   }
 
   @keyframes fade{

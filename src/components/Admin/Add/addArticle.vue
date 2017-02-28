@@ -45,7 +45,7 @@ require('static/utf8-php/lang/zh-cn/zh-cn.js');
         var tag = this.$refs.tag.value;
         var content = this.editor.getContent();
         console.log(this.editor.getContent())
-        this.$http.post('http://localhost:80/vue-blog/admin/model/articleAdd.php',
+        this.$http.post( global.url +'/admin/model/articleAdd.php',
           {
             "method":"add",
             "title":title,
