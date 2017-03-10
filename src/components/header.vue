@@ -3,7 +3,7 @@
     <div class="link">
       <router-link to="/index" class="index">首页</router-link>
       <div class="login">
-        <span class="avatar" @click.stop="infoA"></span>
+        <span class="avatar" v-bind:class="{ clicked: isClicked}" @click.stop="infoA"></span>
         <div class="about" v-bind:class="{ clicked: isClicked}">
           <div class="about-me">
             <img :src="avatar" alt=""> 
@@ -106,12 +106,20 @@
       transition: all 0.2s;
       border-radius: 50%;
       border: 1px solid #eee;
-      box-shadow: 0px 0px 7px 2px #c5c3c3;
+      box-shadow: 0px 0px 7px 10px transparent;
+      /*box-shadow: 0px 0px 7px 2px #c5c3c3;*/
       background-image: url('../assets/avatar.jpg');
       background-size: contain;
       cursor: pointer;
       z-index: 9999;
+      &:hover{
+        box-shadow: 0px 0px 3px 2px #c5c3c3;
+      }
     }
+  }
+
+  .clicked.avatar{
+    box-shadow: 0px 0px 3px 2px #c5c3c3;
   }
 
   

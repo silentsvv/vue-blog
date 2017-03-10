@@ -11,6 +11,7 @@
 		width: 100%;
 		background:url('../assets/bg.jpg');
 		background-size: cover;
+		background-attachment: fixed;
 		&:after{
 			content: '';
 			position: absolute;

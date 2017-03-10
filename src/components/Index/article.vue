@@ -54,15 +54,22 @@
     box-shadow: 0px 0px 7px 0px #ccc;
     margin: 40px auto;
     animation: fade 0.35s;
+    &:hover{
+      box-shadow: 0px 0px 15px 0px #d89572;
+    }
   } 
 
   .article-title{
     font-size: 35px;
     text-align: center;
     padding: 25px 10px;
+    transition: all 0.2s;
     a{
       text-decoration: none;
       color: #000;
+    }
+    &:hover{
+      transform:scale(1.1)
     }
   }
 
@@ -83,9 +90,14 @@
       line-height: 26px;
       color: #d89572;
       margin: 8px auto;
+      box-shadow: 0px 0px 8px 5px transparent;
+      transition: box-shadow 0.25s ease-out;
       border: 1px solid #d89572;
       cursor: pointer;
       border-radius: 5px;
+      &:hover{
+        box-shadow: 0px 0px 2px 0px #d89572;
+      }
       a{
         color: #d89572;
         text-decoration: none;
