@@ -5,6 +5,7 @@
           {{article.title}}
         </div>
         <div class="content" v-html="article.content">
+          <img :src="bg" alt="">
         </div>
         <div class="time">{{article.time}}</div>
       </div> 
@@ -18,7 +19,8 @@
     data () {
       return{
         article : mock.article[0],
-        show: true
+        show: true,
+        bg: require("../../assets/avatar.jpg")
       }
     },
     created () {

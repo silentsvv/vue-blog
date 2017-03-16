@@ -53,9 +53,13 @@
     background: #fff;
     box-shadow: 0px 0px 7px 0px #ccc;
     margin: 40px auto;
+    transition: box-shadow 0.35s;
     animation: fade 0.35s;
     &:hover{
-      box-shadow: 0px 0px 15px 0px #d89572;
+      box-shadow: 0px 0px 14px 0px #ececec;
+    }
+    &:first-child{
+      margin-top: 0px;
     }
   } 
 
@@ -63,13 +67,13 @@
     font-size: 35px;
     text-align: center;
     padding: 25px 10px;
-    transition: all 0.2s;
+    transition: all 0.75s;
     a{
       text-decoration: none;
       color: #000;
     }
     &:hover{
-      transform:scale(1.1)
+      // transform:scale(1.01);
     }
   }
 

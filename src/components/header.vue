@@ -10,7 +10,7 @@
           </div>
           <div class="send-mes">
             <span class="message">
-              发送消息
+              关注我
             </span>
           </div>
         </div>
@@ -50,6 +50,7 @@
 <style lang='less'>
   .header{
     position: fixed;
+    top: 0px;
     width: 100%;
     height: 80px;
     z-index: 99;
@@ -70,10 +71,19 @@
       height: 80px;
       text-align: center;
       font-size: 18px;
-      line-height: 80px;
+      line-height: 90px;
       color: #ffffff;
       text-decoration: none;
       transition: all 0.2;
+      &:after{
+        content:"";
+        position: absolute;
+        left: 50%;
+        bottom: 0%;
+        transform: translateX(-50%);
+        width: 100%;
+        border-bottom: 4px solid;
+      }
       &:hover{
         color: #614224;
       }
@@ -137,7 +147,7 @@
     opacity: 0;
     z-index: -1;
     .about-me{
-      padding: 20px 30px 20px 30px;
+      margin: 20px auto;
       height: 120px;
       width: 120px;
       img{
@@ -150,11 +160,12 @@
       .message{
         display: block;
         margin:0 auto;
-        padding: 2px 5px;
         width: 100px;
-        height: 20px;
+        height: 30px;
+        line-height: 30px;
         font-size: 14px;
         text-align: center;
+        color: #6b6767;
         border: 1px solid #ccc;
         cursor: pointer;
       }
