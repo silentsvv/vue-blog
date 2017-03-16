@@ -10,7 +10,7 @@
 		top: 0px;
 		height: 100%;
 		width: 100%;
-		background:url('../assets/bg.jpg');
+		background:url('../assets/bg.jpg') no-repeat;
 		background-size: cover;
 		background-position: 50% 50%;
 		/*background-attachment: fixed;*/

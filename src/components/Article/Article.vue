@@ -37,11 +37,12 @@
 
 <style lang="less" scoped>
   .wrap {
-    width: 1000px;
     height: auto;
-    margin: 50px auto;
     animation: fade 0.35s;
     .article{
+      margin: 0 auto;
+      max-width: 1000px;
+      min-height: 500px;
       background: #fff;
       box-shadow: 0px 0px 15px 1px #ccc;
       .title{
