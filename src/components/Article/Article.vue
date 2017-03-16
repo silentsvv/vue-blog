@@ -41,8 +41,8 @@
     animation: fade 0.35s;
     .article{
       margin: 0 auto;
-      max-width: 1000px;
       min-height: 500px;
+      max-width: 1000px;
       background: #fff;
       box-shadow: 0px 0px 15px 1px #ccc;
       .title{
@@ -52,7 +52,6 @@
         text-align: center;
         line-height: 100px;
         font-size: 34px;
-        // border-bottom: 1px solid #eee;
       }
       .content{
         width: 100%;
