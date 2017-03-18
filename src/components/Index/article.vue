@@ -1,5 +1,8 @@
 <template>
 <div class="wrap">
+  <div class="search" v-bind:class="{searched:isSearch}">
+    <input type="text" class="search-input" placeholder="请输入搜索词"><i class="fa fa-search" @click="search"></i>
+  </div>
   <div class="article" v-for="article in articles" >
     <div class="article-title">
       <router-link :to="{ name: 'article', params: {id: article.id}}">{{article.title}}</router-link>
@@ -26,10 +29,14 @@
   export default{
     data () {
       return {
-        articles : mock.article
+        articles : mock.article,
+        isSearch : false
       }
     },
     methods:{
+      search(){
+        this.isSearch = !this.isSearch;
+      }
     },
     mounted() {
       this.$http.get( global.url + '/admin/model/articleList.php').then(response => {
@@ -126,6 +133,58 @@
     color: #929090;
     font-size: 14px;
     border-bottom: 1px solid #b9b9b9;
+  }
+
+
+  //搜索条
+  .search{
+    position: absolute;
+    right: 40px;
+    top: -80px;
+    .search-input{
+      margin-right: -20px;
+      padding-left: 10px;
+      padding-right: 50px;
+      height: 36px;
+      width: 50px;
+      color: #f5f5f5;
+      border: 1px solid #a9a5a5; 
+      border-radius: 10px;
+      outline: none;
+      background-color: transparent;
+      transition: all 0.25s;
+      transition-delay: 0.10s;
+      opacity: 0;
+      &::-webkit-input-placeholder{
+        color: #ccc;
+      }
+    }
+    .fa-search{
+      position: absolute;
+      top: 5px;
+      right: -10px;
+      height: 26px;
+      transform: scale(0.8);
+      transition: all 0.25s;
+      font-size: 26px;
+      color: #a9a5a5;
+    }
+  }
+
+  .searched{
+    .search-input{
+      margin-right: 0px;
+      width: 300px;
+      opacity: 1;
+    }
+    .fa-search{
+      top: 5px;
+      right: 5px;
+      height: 26px;
+      font-size: 26px;
+      transform: scale(1);
+      color: #a9a5a5;
+    }
   }
 
   @keyframes fade{

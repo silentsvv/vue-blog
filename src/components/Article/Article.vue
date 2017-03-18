@@ -5,7 +5,6 @@
           {{article.title}}
         </div>
         <div class="content" v-html="article.content">
-          <img :src="bg" alt="">
         </div>
         <div class="time">{{article.time}}</div>
       </div> 
@@ -20,7 +19,7 @@
       return{
         article : mock.article[0],
         show: true,
-        bg: require("../../assets/avatar.jpg")
+        bg: require("../../assets/qq.png")
       }
     },
     created () {
@@ -59,6 +58,11 @@
         padding: 40px 100px;
         margin-bottom: 100px;
         font-size: 16px;
+        img{
+          display: block;
+          max-width: 80%;
+          margin: 10px auto;
+        }
       }
       .time{
         margin-right: 20px;
