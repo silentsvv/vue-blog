@@ -1,7 +1,7 @@
 <template>
 <div class="wrap">
   <div class="search" v-bind:class="{searched:isSearch}">
-    <input type="text" class="search-input" placeholder="请输入搜索词"><i class="fa fa-search" @click="search"></i>
+    <input type="text" class="search-input" placeholder="请输入相关文章名"><i class="fa fa-search" @click="search"></i>
   </div>
   <div class="article" v-for="article in articles" >
     <div class="article-title">
@@ -44,10 +44,23 @@
         for(let i = 0; i < this.articles.length; i++){
           this.articles[i].content = this.articles[i].content.replace(/<[^>]*>/gi,'').replace(/&nbsp;/gi,' ').substring(0,30)+'......';
         }
-        console.log(this.articles);
-      }, response => {
-        // error callback
       })
+
+      let search = document.getElementsByClassName('search-input')[0];
+      let inputText;
+      let _this = this;
+      search.onkeydown = function(event){
+        if(event.keyCode == "13"){
+          console.log("你按了回车")
+          inputText = search.value;
+          _this.$http.get( global.url + '/admin/model/articleSearch.php?s='+inputText).then(response => {
+            _this.articles=response.body;
+            for(let i = 0; i < _this.articles.length; i++){
+              _this.articles[i].content = _this.articles[i].content.replace(/<[^>]*>/gi,'').replace(/&nbsp;/gi,' ').substring(0,30)+'......';
+            }
+          })
+        }
+      }
     }
   }
 </script>
@@ -71,13 +84,13 @@
   } 
 
   .article-title{
-    font-size: 35px;
+    font-size: 24px;
     text-align: center;
     padding: 25px 10px;
     transition: all 0.75s;
     a{
       text-decoration: none;
-      color: #000;
+      color: #333;
     }
     &:hover{
       // transform:scale(1.01);
@@ -85,14 +98,15 @@
   }
 
   .article-summary{
-    font-size: 20px;
+    font-size: 16px;
     padding: 5px 20px;
-    height: 90px;
+    height: 70px;
+    color: #313131;
   }
 
   .article-view{
     width: 100%;
-    height: 36px;
+    height: 60px;
     .more{
       width: 100px;
       height: 26px;
@@ -101,6 +115,7 @@
       line-height: 26px;
       color: #d89572;
       margin: 8px auto;
+      margin-bottom: 16px;
       box-shadow: 0px 0px 8px 5px transparent;
       transition: box-shadow 0.25s ease-out;
       border: 1px solid #d89572;
@@ -132,7 +147,6 @@
     right: 10px;
     color: #929090;
     font-size: 14px;
-    border-bottom: 1px solid #b9b9b9;
   }
 
 
@@ -168,6 +182,7 @@
       transition: all 0.25s;
       font-size: 26px;
       color: #a9a5a5;
+      cursor: pointer;
     }
   }
 
@@ -179,7 +194,7 @@
     }
     .fa-search{
       top: 5px;
-      right: 5px;
+      right: 8px;
       height: 26px;
       font-size: 26px;
       transform: scale(1);

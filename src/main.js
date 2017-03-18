@@ -12,6 +12,7 @@ Vue.use(VueRouter)
 Vue.use(VueResource)
 
 global.url = '';
+// global.url = 'http://localhost/vue-blog';
 
 const routes = [{
   path: '/',

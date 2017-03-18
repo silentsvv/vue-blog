@@ -18,8 +18,7 @@
     data () {
       return{
         article : mock.article[0],
-        show: true,
-        bg: require("../../assets/qq.png")
+        show: true
       }
     },
     created () {
