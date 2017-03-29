@@ -9,7 +9,7 @@
         <div class="time">{{article.time}}</div>
       </div> 
       <Comment></Comment>
-      <AddComment></AddComment>
+      <AddComment :articleId="article.id"></AddComment>
   </div>
 </template>
 
@@ -34,9 +34,8 @@
       var id = url.match(/article\/(\d*)/)[1];
       this.$http.post( global.url + '/admin/model/articleList.php', {"id":id},{emulateJSON:true}).then(response => {
         this.article = response.body;  
-      }, response => {
-        // error callback
       })
+
     }
   }
 </script>

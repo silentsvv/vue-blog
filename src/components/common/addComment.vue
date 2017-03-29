@@ -3,17 +3,34 @@
     <div class="add-comment-post">
       <div class="add-comment-name">
         <span>姓名:</span>
-        <input type="text">
+        <input type="text" id="comment-name">
       </div> 
       <div class="add-comment-text">
         <textarea name="" id="add-comment-textarea"></textarea>
       </div>
       <div class="add-comment-btn">
-        <span class="btn-add">提交</span>
+        <span class="btn-add" @click="addComment">提交</span>
       </div>
     </div>      
   </div>
 </template>
+
+<script>
+  export default{
+    props: ['articleId'],
+    methods:{
+      addComment () {
+        let username = document.getElementById('comment-name').value;
+        let content = document.getElementById('add-comment-textarea').value;
+        let article_id = this.articleId;
+
+        this.$http.post( global.url + '/admin/model/commentAdd.php',{'article_id':article_id,'username':username,"content":content},{emulateJSON:true}).then(response => {
+          console.log(response);
+        })
+      }
+    }
+  }
+</script>
 
 <style lang="less">
   .add-comment{

@@ -1,16 +1,35 @@
 <template>
   <div class="comment-list">
-    <div class="comment">
-      <div class="comment-name">李大燕</div> 
+    <div class="comment" v-for="comment in comments">
+      <div class="comment-name">{{comment.username}}</div> 
       <div class="comment-text">
-        沙发
+        {{comment.content}}
       </div>
       <div class="comment-date">
-        2017-03-14
+        {{comment.time}}
       </div>
     </div>      
   </div>
 </template>
+
+<script>
+  export default{
+    data() {
+      return{
+        comments : []
+      }
+    },
+    created (){
+      var url = location.href;
+      var id = url.match(/article\/(\d*)/)[1];
+      this.$http.post( global.url + '/admin/model/commentList.php', {"id":id},{emulateJSON:true}).then(response => {
+        console.log(response)
+        this.comments = response.body;
+        console.log(this.comments[0]);
+      })
+    }
+  }
+</script>
 
 <style lang="less">
   .comment-list{
