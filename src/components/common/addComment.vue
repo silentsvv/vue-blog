@@ -1,0 +1,54 @@
+<template>
+  <div class="add-comment">
+    <div class="add-comment-post">
+      <div class="add-comment-name">
+        <span>姓名:</span>
+        <input type="text">
+      </div> 
+      <div class="add-comment-text">
+        <textarea name="" id="add-comment-textarea"></textarea>
+      </div>
+      <div class="add-comment-btn">
+        <span class="btn-add">提交</span>
+      </div>
+    </div>      
+  </div>
+</template>
+
+<style lang="less">
+  .add-comment{
+    margin: 10px auto;
+    max-width: 1000px;
+    // background: #eee;
+    border: 1px solid #ccc;
+    .add-comment-post{
+      padding: 10px;
+      min-height: 100px;
+      background: #fff; 
+      .add-comment-name{
+        padding: 10px;
+        font-size: 14px;
+      }
+      .add-comment-text{
+        padding: 20px;
+        background: #bbb;
+        #add-comment-textarea{
+          height: 150px;
+          width: 100%;
+          padding: 10px 20px;
+        }
+      }
+      .add-comment-btn{
+        text-align: center;
+        padding-top: 10px;
+        .btn-add{
+          display: inline-block;
+          width: 80px;
+          height: 30px;
+          line-height: 30px;
+          background: #bbb;
+        } 
+      }
+    }
+  }
+</style>
