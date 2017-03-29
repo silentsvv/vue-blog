@@ -8,11 +8,15 @@
         </div>
         <div class="time">{{article.time}}</div>
       </div> 
+      <Comment></Comment>
+      <AddComment></AddComment>
   </div>
 </template>
 
 <script>
   import mock from '../../data/data.js'
+  import Comment from '../common/comment'
+  import AddComment from '../common/addComment'  
 
   export default {
     data () {
@@ -20,6 +24,10 @@
         article : mock.article[0],
         show: true
       }
+    },
+    components:{
+      Comment,
+      AddComment
     },
     created () {
       var url = location.href;
