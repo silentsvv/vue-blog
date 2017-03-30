@@ -16,7 +16,8 @@
 <script>
   import mock from '../../data/data.js'
   import Comment from '../common/comment'
-  import AddComment from '../common/addComment'  
+  import AddComment from '../common/addComment'
+  import Bus from '../../bus.js'  
 
   export default {
     data () {

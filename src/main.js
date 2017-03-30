@@ -7,6 +7,7 @@ import Index from './components/Index/index'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import AddArticle from './components/Admin/Add/addArticle'
+import Bus from './bus.js' 
 
 Vue.use(VueRouter)
 Vue.use(VueResource)

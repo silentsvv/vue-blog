@@ -16,16 +16,43 @@
 </template>
 
 <script>
+  import Bus from '../../bus.js' 
+
   export default{
     props: ['articleId'],
     methods:{
       addComment () {
+        var url = location.href;
+        var id = url.match(/article\/(\d*)/)[1];
         let username = document.getElementById('comment-name').value;
         let content = document.getElementById('add-comment-textarea').value;
         let article_id = this.articleId;
 
         this.$http.post( global.url + '/admin/model/commentAdd.php',{'article_id':article_id,'username':username,"content":content},{emulateJSON:true}).then(response => {
           console.log(response);
+          let comment = {};
+          comment.username = username;
+          comment.content = content;
+          Date.prototype.Format = function(fmt)   
+          { //author: meizz   
+            var o = {   
+              "M+" : this.getMonth()+1,                 //月份   
+              "d+" : this.getDate(),                    //日   
+              "h+" : this.getHours(),                   //小时   
+              "m+" : this.getMinutes(),                 //分   
+              "s+" : this.getSeconds(),                 //秒   
+              "q+" : Math.floor((this.getMonth()+3)/3), //季度   
+              "S"  : this.getMilliseconds()             //毫秒   
+            };   
+            if(/(y+)/.test(fmt))   
+              fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
+            for(var k in o)   
+              if(new RegExp("("+ k +")").test(fmt))   
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+            return fmt;   
+          }  
+          comment.time = new Date().Format("yyyy-MM-dd hh:mm:ss");
+          Bus.$emit('change', comment);
         })
       }
     }

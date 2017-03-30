@@ -1,7 +1,8 @@
 <template>
   <div class="comment-list">
-    <div class="comment" v-for="comment in comments">
-      <div class="comment-name">{{comment.username}}</div> 
+    <div class="comment" v-for="(comment,index) in comments">
+      <div class="comment-num">{{index+1}}楼</div>
+      <div class="comment-name"><span>用户：</span>{{comment.username}}</div> 
       <div class="comment-text">
         {{comment.content}}
       </div>
@@ -13,6 +14,8 @@
 </template>
 
 <script>
+  import Bus from '../../bus.js'  
+
   export default{
     data() {
       return{
@@ -22,10 +25,12 @@
     created (){
       var url = location.href;
       var id = url.match(/article\/(\d*)/)[1];
+      var _this = this;
+      Bus.$on('change', function(comment){
+        _this.comments.push(comment);
+      }.bind(_this))
       this.$http.post( global.url + '/admin/model/commentList.php', {"id":id},{emulateJSON:true}).then(response => {
-        console.log(response)
         this.comments = response.body;
-        console.log(this.comments[0]);
       })
     }
   }
