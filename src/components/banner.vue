@@ -1,6 +1,5 @@
 <template>
 	<div id="banner">
-	
 	</div>
 </template>
 
@@ -22,5 +21,9 @@
 			background-color: rgba(0,0,0,0.35);
 			z-index: -1;
 		}
+	}
+
+	#banner.logined{
+		filter: blur(3px);
 	}
 </style>

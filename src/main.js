@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import Article from './components/Article/Article'
 import Index from './components/Index/index'
+import Login from './components/Login/login'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import AddArticle from './components/Admin/Add/addArticle'
@@ -25,7 +26,8 @@ const routes = [{
     {path: '/index', component: Index},
     {path: '/article', component: Article},
     {path: '/article/:id', name: 'article',component: Article},
-    {path: '/add', component: AddArticle}
+    {path: '/add', component: AddArticle},
+    {path: '/login', component: Login}
   ]}
 ]
 

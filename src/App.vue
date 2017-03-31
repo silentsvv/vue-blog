@@ -1,12 +1,12 @@
 <template>
   <div id="main">
     <MyHeader></MyHeader>
-    <div class="word">
+    <div v-if="!isLogin" class="word">
       <p>不知道说些什么，还是写点字凑字数吧。</p>
     </div>
-    <Banner></Banner>
+    <Banner v-bind:class="{logined:isLogin}"></Banner>
     <router-view></router-view>
-    <MyFooter></MyFooter>
+    <MyFooter v-if="!isLogin"></MyFooter>
   </div>
 </template>
 <script>
@@ -24,7 +24,13 @@ export default {
     Banner,
     MyFooter
   },
+  computed:{
+    isLogin(){
+      return this.$route.fullPath === '/login'
+    }
+  },
   mounted() {
+    console.log(this.$route.fullPath)
   }
 }
 </script>
