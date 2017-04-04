@@ -2,11 +2,11 @@
   <div id="login">
     <div class="login-wrap">
       <div class="login-nav">
-        <span class="login-in">登录</span>
-        <span class="reg-in">注册</span>
+        <span :class="['login-in',{'nav-active':isLog}]" @click="log">登录</span>
+        <span :class="['reg-in',{'nav-active':!isLog}]" @click="reg">注册</span>
       </div> 
       <div class="show-part">
-        <div  v-bind:class="['login-part',{'part-hide':!isLog}]">
+        <div  v-bind:class="['login-part',{active:isLog}]" v-show="isLog">
           <div class="log-username">
             <span class="username">姓名:</span>
             <input type="text" name="" id="">
@@ -19,7 +19,7 @@
             <span class="log-btn-click">登录</span>
           </div>
         </div> 
-        <div :class="['reg-part',{'part-hide':isLog}]">
+        <div :class="['reg-part',{active:!isLog}]" v-show="!isLog">
           <div class="reg-username">
             <span class="username">姓名:</span>
             <input type="text" name="" id="">
@@ -27,6 +27,9 @@
           <div class="reg-password">
             <span class="password">密码:</span>
             <input type="text" name="" id="">
+          </div>
+          <div class="reg-btn">
+            <span class="reg-btn-click">注册</span>
           </div>
         </div>
       </div>
@@ -39,6 +42,14 @@
     data(){
       return {
         isLog: true
+      }
+    },
+    methods: {
+      log() {
+        this.isLog = true;
+      },
+      reg() {
+        this.isLog = false;
       }
     }
   }
@@ -69,7 +80,7 @@
           height: 100%;
           margin: 0 auto;
         }
-        .log-username,.log-password{
+        .log-username,.log-password,.reg-username,.reg-password{
           padding: 10px;
           input{
             margin-right: 40px;
@@ -81,9 +92,9 @@
             margin-right: 20px;
           }
         }
-        .log-btn{
+        .log-btn,.reg-btn{
           margin-top: 50px;
-          .log-btn-click{
+          .log-btn-click,.reg-btn-click{
             display: inline-block;
             width: 80px;
             height: 34px;
@@ -99,12 +110,15 @@
       .login-in{
         font-size: 18px;
         padding: 16px 24px 0px 24px;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.3);
       }
       .reg-in{
         font-size: 18px;
         padding: 16px 24px 0px 24px;
         background: rgba(0, 0, 0, 0.3);
+      }
+      .nav-active{
+        background: rgba(0, 0, 0, 0.5);
       }
     }
     .part-hide{
