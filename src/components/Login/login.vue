@@ -2,7 +2,9 @@
   <div id="login">
     <div class="login-wrap">
       <div class="login-nav">
-        <span :class="['login-in',{'nav-active':isLog}]" @click="log">登录</span>
+        <transition name="fade">
+          <span :class="['login-in',{'nav-active':isLog}]" @click="log">登录</span>
+        </transition>
         <span :class="['reg-in',{'nav-active':!isLog}]" @click="reg">注册</span>
       </div> 
       <div class="show-part">

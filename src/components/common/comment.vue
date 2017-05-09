@@ -2,7 +2,7 @@
   <div class="comment-list">
     <div class="comment" v-for="(comment,index) in comments">
       <div class="comment-num">{{index+1}}楼</div>
-      <div class="comment-name"><span>用户：</span>{{comment.username}}</div> 
+      <div class="comment-name"><span></span><span class="name-style">{{comment.username}}:</span></div> 
       <div class="comment-text">
         {{comment.content}}
       </div>
@@ -41,22 +41,55 @@
     margin: 10px auto;
     max-width: 1000px;
     // background: #eee;
-    border: 1px solid #ccc;
     .comment{
+      margin-top: 10px;
       padding: 10px;
       min-height: 100px;
-      background: #fff; 
+      background: #fff;
+      .comment-num {
+        position: relative;
+        padding-left: 10px;
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        color: #fff;
+        background: #eabc68;
+        &:after {
+          content: '';
+          position: absolute;
+          right: 0;
+          width: 0px;
+          height: 0px; 
+          border-top: 15px solid #eabc68;
+          border-bottom: 15px solid #eabc68;
+          border-right: 15px solid transparent;
+          background: #fff;
+        }
+      }
       .comment-name{
-        padding: 10px;
-        font-size: 14px;
+        padding: 20px;
+        font-size: 16px;
+        position: relative;
+        // &:before {
+        //   content: '';
+        //   position: absolute;
+        //   left: -10px;
+        //   width: 30px;
+        //   height: 30px;
+        //   background: #000;
+        // }
+        .name-style {
+          font-weight: 700;
+        }
       }
       .comment-text{
-        padding: 20px;
-        background: #eee;
+        padding: 20px 20px 40px 20px;
+        font-size: 14px;
+        color: #666;
       }
       .comment-date{
         text-align: right;
-        color: #888;
+        color: #666;
         padding-top: 10px;
         font-size: 14px;
       }

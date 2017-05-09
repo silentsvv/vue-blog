@@ -2,7 +2,7 @@
   <div class="add-comment">
     <div class="add-comment-post">
       <div class="add-comment-name">
-        <span>姓名:</span>
+        <span>用户名：</span>
         <input type="text" id="comment-name">
       </div> 
       <div class="add-comment-text">
@@ -64,6 +64,11 @@
     margin: 10px auto;
     max-width: 1000px;
     // background: #eee;
+    #comment-name {
+      border: 1px solid #eee;
+      height: 30px;
+      padding-left: 5px;
+    }
     border: 1px solid #ccc;
     .add-comment-post{
       padding: 10px;
@@ -74,12 +79,11 @@
         font-size: 14px;
       }
       .add-comment-text{
-        padding: 20px;
-        background: #bbb;
         #add-comment-textarea{
           height: 150px;
           width: 100%;
           padding: 10px 20px;
+          border: 1px solid #eee;
         }
       }
       .add-comment-btn{
@@ -90,7 +94,8 @@
           width: 80px;
           height: 30px;
           line-height: 30px;
-          background: #bbb;
+          color: #fff;
+          background: #eabc68;
         } 
       }
     }

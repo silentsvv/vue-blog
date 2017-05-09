@@ -47,29 +47,33 @@
     animation: fade 0.35s;
     .article{
       margin: 0 auto;
-      min-height: 500px;
+      min-height: 800px;
       max-width: 1000px;
       background: #fff;
       box-shadow: 0px 0px 15px 1px #ccc;
       .title{
         position: relative;        
         width: 100%;
-        height: 150px;
+        height: 100px;
         text-align: center;
         line-height: 100px;
         font-size: 34px;
+        &:after {
+          content: '';
+          position: absolute;
+          left: 5%;
+          bottom: 0;
+          width: 90%;
+          border-bottom: 1px dashed #eee; 
+        }
       }
       .content{
         width: 100%;
         box-sizing: border-box;
+        min-height: 500px;
         padding: 40px 100px;
         margin-bottom: 100px;
         font-size: 16px;
-        img{
-          display: block;
-          max-width: 80%;
-          margin: 10px auto;
-        }
       }
       .time{
         margin-right: 20px;
@@ -79,6 +83,12 @@
         color: #8a8a8a;
       }
     }
+  }
+
+  .content img {
+    display: block;
+    max-width: 80%;
+    margin: 10px auto;
   }
 
   .wrap{

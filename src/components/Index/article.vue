@@ -100,7 +100,7 @@
   .article-summary{
     font-size: 16px;
     padding: 5px 20px;
-    height: 70px;
+    height: 100px;
     color: #313131;
   }
 
