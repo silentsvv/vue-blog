@@ -1,7 +1,7 @@
 <template>
   <div class="comment-list">
     <div class="comment" v-for="(comment,index) in comments">
-      <div class="comment-num">{{index+1}}楼</div>
+      <div class="comment-num">#{{index+1}}</div>
       <div class="comment-name"><span></span><span class="name-style">{{comment.username}}:</span></div> 
       <div class="comment-text">
         {{comment.content}}
@@ -53,15 +53,16 @@
         height: 30px;
         line-height: 30px;
         color: #fff;
-        background: #eabc68;
+        background: #f1cd8c;
+        border-right: 1px solid #f1cd8c;
         &:after {
           content: '';
           position: absolute;
           right: 0;
           width: 0px;
           height: 0px; 
-          border-top: 15px solid #eabc68;
-          border-bottom: 15px solid #eabc68;
+          border-top: 15px solid #f1cd8c;
+          border-bottom: 15px solid #f1cd8c;
           border-right: 15px solid transparent;
           background: #fff;
         }

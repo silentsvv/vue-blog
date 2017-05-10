@@ -9,9 +9,9 @@
             <img :src="avatar" alt=""> 
           </div>
           <div class="send-mes">
-            <span class="message">
-              关注我
-            </span>
+            <a href="https://github.com/silentsvv"><i class="fa fa-github" aria-hidden="true"></i></a>
+            <a href="tencent://message/?uin=664506043&Site=Sambow&Menu=yes"><i class="fa fa-qq" aria-hidden="true"></i></a>
+            <a href="mailto:silentsvv@163.com"><i class="fa fa-envelope" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
@@ -157,6 +157,13 @@
       }
     }
     .send-mes{
+      font-size: 0px;
+      i {
+        width: 60px;
+        font-size: 16px;
+        color: #989898;
+        text-align: center;
+      }
       .message{
         display: block;
         margin:0 auto;

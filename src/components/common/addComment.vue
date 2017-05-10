@@ -29,7 +29,6 @@
         let article_id = this.articleId;
 
         this.$http.post( global.url + '/admin/model/commentAdd.php',{'article_id':article_id,'username':username,"content":content},{emulateJSON:true}).then(response => {
-          console.log(response);
           let comment = {};
           comment.username = username;
           comment.content = content;
@@ -53,6 +52,7 @@
           }  
           comment.time = new Date().Format("yyyy-MM-dd hh:mm:ss");
           Bus.$emit('change', comment);
+          Bus.$emit('showTip');
         })
       }
     }
@@ -76,13 +76,16 @@
       background: #fff; 
       .add-comment-name{
         padding: 10px;
+        padding-left: 10%;
         font-size: 14px;
       }
       .add-comment-text{
+        text-align: center;
         #add-comment-textarea{
-          height: 150px;
-          width: 100%;
+          margin: 0 auto;
           padding: 10px 20px;
+          height: 150px;
+          width: 80%;
           border: 1px solid #eee;
         }
       }
@@ -95,7 +98,8 @@
           height: 30px;
           line-height: 30px;
           color: #fff;
-          background: #eabc68;
+          background: #f1cd8c;
+          cursor: pointer;
         } 
       }
     }
